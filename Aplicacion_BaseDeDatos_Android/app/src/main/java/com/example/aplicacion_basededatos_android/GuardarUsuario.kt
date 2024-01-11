@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.EditText
 
@@ -32,10 +33,22 @@ class GuardarUsuario : AppCompatActivity() {
         salario = findViewById(R.id.Salario)
         fun clearFieldOnFocusChange(v: View, hasFocus: Boolean) {
             if (hasFocus) {
+                when (v) {
+                    edad,salario -> {
+                        (v as EditText).apply {
+                            text.clear()
+                            setTypeface(null, Typeface.NORMAL)
+                            setTextColor(Color.BLACK)
+                            setRawInputType(InputType.TYPE_CLASS_NUMBER)
+
+                        }
+                    }
+                }
                 (v as EditText).apply {
                     text.clear()
                     setTypeface(null, Typeface.NORMAL)
                     setTextColor(Color.BLACK)
+
                 }
             }
         }
